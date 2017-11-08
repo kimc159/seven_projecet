@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title></title>
+	<script
+	  src="https://code.jquery.com/jquery-2.2.4.min.js"
+	  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+	  crossorigin="anonymous"></script>
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<body>
+<style type="text/css">
+	body{
+		width: 100%;
+		width: 100%;
+	}
+	table, th, td { border: 1px solid black; } th { cursor: pointer; } 
+	.timeView .time{
+		font-size: 25px;
+		font-weight: bold;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.timeView .combo{
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		margin: 5px auto;
+	}
+	.contentView .gamebutton{
+		border: 1px solid #ffffff;
+		padding: 30px;
+		font-size: 60px;
+		color: #ffffff;
+		text-align: center;
+		font-weight: bold;
+		transition: all 0.5s;
+	}
+	.contentView .gamebutton .inner-text{
+		transition: all 0.2s;
+	}
+	.scoreView .score{
+		font-size: 25px;
+		font-weight: bold;
+		text-align: center;
+		margin: 30px auto;
+	}
+	#score{
+		font-size: 25px;
+		font-weight: bold;
+		line-height: 100px;
+		margin-top: 100px;
+	}
+	#score #com-score{
+		margin: 0 auto;
+		text-align: center;
+	}
+	#score .rank_restart{
+		width: 100%;
+		float: left;
+		text-align: center;
+		margin: 0 auto;
+	}
+	#score .rank_restart a{
+		font-size: 25px;
+	}
+	#score #userShow{
+		width: 150px;
+		height: 30px;
+	}
+	#st-game{
+		font-size: 30px;
+		font-weight: bold;
+		line-height: 100px;
+		margin-top: 100px;
+	}
+	#st-game #st-view{
+		margin: 0 auto;
+		text-align: center;
+	}
+	#st-game #st-view .sp1{
+		color: #000;
+		text-shadow: 0px 1px 8px #fff;
+	}
+	#st-game .st-game-go{
+		width: 100%;
+		float: left;
+		text-align: center;
+		margin: 0 auto;
+	}
+	#st-game .st-game-go a{
+		font-size: 25px;
+	}
+	.rank_list{
+		margin-top: 100px;
+	}
+	@media screen and (max-width:767px){
+		.contentView .gamebutton{
+			width: 25%;
+			float: left;
+		}
+	}
+	@media screen and (min-width: 768px){
+		.contentView .gamebutton{
+			width: 25%;
+			float: left;
+		}
+	}
+	@media screen and (min-width:1200px){
+	}
+</style>
+<div id="seven" style="display: none;">
+	<div class="timeView">
+		<div class="row">
+			<div class="col-lg-12 time">
+				<span id="ViewTimer"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 combo">
+				<span>combo : </span><span id="comboView">0</span>
+			</div>
+		</div>
+	</div>
+	<div class="contentView">
+		<div class="row row1">
+			<div class="col-lg-3 gamebutton index-0">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton index-1">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton index-2">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton index-3">
+				<div class="inner-text">7</div>
+			</div>
+		</div>
+		<div class="row row2">
+			<div class="col-lg-3 gamebutton index-0">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton index-1">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton index-2">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton index-3">
+				<div class="inner-text">7</div>
+			</div>
+		</div>
+		<div class="row row3">
+			<div class="col-lg-3 gamebutton index-0">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton	index-1">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton index-2">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton index-3">
+				<div class="inner-text">7</div>
+			</div>
+		</div>
+		<div class="row row4">
+			<div class="col-lg-3 gamebutton index-0">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton index-1">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton index-2">
+				<div class="inner-text">7</div>
+			</div>
+			<div class="col-lg-3 gamebutton index-3">
+				<div class="inner-text">7</div>
+			</div>
+		</div>
+	</div>
+	<div class="scoreView">
+		<div class="row">
+			<div class="col-lg-12 score">
+				<span>score : </span><span id="scoreView">0</span>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="score" style="display: none;">
+	<div class="row" id="com-score">
+		<div class="col-lg-12">
+			<span id="user_name">user :</span></span><input type="text" id="userShow">
+			<a class="btn btn-primary" href="#" role="button" id="rank_btn">확인</a>
+		</div>
+		<div class="col-lg-12">
+			<span>combo : </span><span id="comboShow"></span>
+		</div>
+		<div class="col-lg-12">
+			<span>score : </span><span id="scoreShow"></span>
+		</div>
+	</div>
+	<div class="rank_restart">
+		<a class="btn btn-primary" href="#" role="button" id="ranking">Rank</a>
+		<a class="btn btn-primary" href="seven_project.html" role="button">Restart</a>
+	</div>
+</div>
+<div id="st-game" style="display: block;">
+	<div class="row" id="st-view">
+		<div class="col-lg-12">
+			<span class="sp1"> 777 game start </span>
+		</div>
+		<div class="col-lg-12">
+			<span class="sp2"> good luck !</span>
+		</div>
+	</div>
+	<div class="st-game-go">
+		<a class="btn btn-primary btn-lg" role="button" onclick="st_game()">start</a>
+	</div>
+</div>
+<div class="rank_list">
+	<div class="table-responsive" id="test1" style="display: none;" >
+		<table class="table table-striped table-bordered table-hover" id="rank_table">
+			<thead><tr><td>순위</td><td>유저</td><td>콤보</td><td>점수</td></tr></thead>
+		</table>
+	</div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-messaging.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAzChzDM0S71wt5YI4peVqcU8LvhKo7V3I",
+    authDomain: "seven-project-60a58.firebaseapp.com",
+    databaseURL: "https://seven-project-60a58.firebaseio.com",
+    projectId: "seven-project-60a58",
+    storageBucket: "seven-project-60a58.appspot.com",
+    messagingSenderId: "1006471656201"
+  };
+  firebase.initializeApp(config);
+var SetTime =10;
+var combo_show = 0;
+var score_show = 0;
+// jquery 1.7 이후로 $(document).ready(function) -> $(function())
+	
+$(function() {
+	var prev_color = '';
+	var prev_text = '';
+	var prev_div = '';
+	var after_text = '';
+	var checked = '';
+	var score = 0;
+	var scoreCombo = 0;
+	var combo = 0;
+	console.log($("#seven").css("display"));
+
+	//초기화면 랜덤으로 색 바꿔주기
+	var cells = document.getElementsByClassName('gamebutton'),
+	    colors = ['f70202','011af7','ffe23f'];
+	    //console.log(cells);
+	for(var i = 0; i < cells.length; i++) {
+	    cells[i].style.backgroundColor = '#' + colors[Math.floor(Math.random() * colors.length)];
+	}
+	// 타이머 설정
+	// 최초 설정 시간(기본 : 초)
+
+	$(document).on("click touchend", ".index-0, .index-1, .index-2, .index-3", function () { 
+		//console.log("click touchend in");
+		//console.log($(this).find(".inner-text").text());
+		$(this).closest(".gamebutton").css("opacity","0.4");
+
+		if (prev_color === '') {
+			// 첫 번째 클릭 했을때
+			prev_color = $(this).css('background-color');
+			prev_text = $(this).find(".inner-text").text();
+			prev_div = $(this);
+			checked = $(this).addClass("clicked");
+		} else {//두 번째 클릭했을때의 같은색인지 여부
+			if ($(this).css('background-color') == prev_color && $(this).find(".inner-text").text() == prev_text && $(this).hasClass("clicked") != true) {
+				console.log(prev_div);
+				console.log($(this));
+				// if($(this).hasClass("clicked") == true){
+				// 	console.log("clicked 있$(this)음");
+				// }
+				//alert("같은색 같은글자");
+				after_text = $(this).find(".inner-text").text();
+				if(after_text == '77'){
+					$(this).find(".inner-text").text("★");
+					prev_div.find(".inner-text").text("7");
+					scoreCombo += 30;
+					score = score + 3000 + scoreCombo;
+					combo +=1;
+				}else if(after_text == '★'){
+					prev_div.find(".inner-text").text("7");
+					$(this).find(".inner-text").text("7");
+					scoreCombo += 50;
+					score = score + 5000 + scoreCombo;
+					combo +=1;
+				}else{
+					scoreCombo += 10; 
+					score = score + 1000 + scoreCombo;
+					combo +=1;
+					$(this).find(".inner-text").text("77");
+				}
+				//두개의 색이 같으면 이전에 클릭했던 div 배경색 바꿔주기
+				prev_div.css('background-color', '#' + colors[Math.floor(Math.random() * colors.length)]);
+			} else {	
+				combo = 0;
+				scoreCombo = 0;
+				//alert("다른색");
+			}
+			prev_color = '';
+			prev_text = '';
+			prev_div = '';
+			after_text = '';
+			checked.removeClass("clicked");
+			$(".index-0, .index-1, .index-2, .index-3").css("opacity","1");
+		}
+	score_show = score;
+	$("#scoreView").text(score);
+	combo_show = combo;
+	$("#comboView").text(combo); 
+	})
+});
+function msg_time() {	// 1초씩 카운트
+	m = Math.floor(SetTime % 60) + "초";	// 남은 시간 계산
+	var msg = "<font color='blue'>" + m + "</font>";
+	document.all.ViewTimer.innerHTML = msg;		// span 영역에 보여줌 
+	SetTime--;					// 1초씩 감소
+	if (SetTime < 0) {			// 시간이 종료 되었으면..
+		clearInterval(tid);		// 타이머 해제
+		alert("종료");
+		$("#seven").css("display","none");
+		$("#score").css("display","block");
+		$("#st-game").css("display","none");
+		$("#scoreShow").text(score_show);
+		$("#comboShow").text(combo_show);
+	}
+}
+$("#rank_btn").click(function(){
+	var user = $("#userShow").val();
+	console.log(user);
+	$("#user_name").text("user : "+ user);
+	$("#userShow").hide();
+	$("#rank_btn").hide();
+	insertData(user,score_show,combo_show);
+})
+function showSeven(){
+	$("#seven").css("display","block");
+	$("#score").css("display","none");
+}
+function st_game(){
+	$("#st-game").css("display","none");
+	$("#seven").css("display","block");
+	TimerStart();
+}
+function TimerStart(){ tid=setInterval('msg_time()', 1000) };
+
+function getDatabase(cb){
+      firebase.database().ref('/rank').orderByChild('uid').once('value').then(function(data) {
+    var database = data.val();
+    //console.log(database);
+        DB_WORDS_DATA = Object.keys(database).map(function(data) {
+            return {
+                id : data,
+                user : database[data].user,
+            	score : database[data].score,
+            	combo :database[data].combo
+            };
+        });
+
+    if(cb){
+      cb(DB_WORDS_DATA);
+    }
+
+  });
+}
+function insertData(user, score, combo){
+    if(score === undefined){
+      console.log("word is undefined!");
+      return -1;
+    }
+    if(combo === undefined){
+      console.log("mean is undefined!");
+      return -1;
+    }
+    //데이터베이스에 없는 테이블 생성
+    //var usersRef =firebase.database().ref('/word2/');
+    //var usersRef = firebase.database().ref('/rank/');
+    var usersRef = firebase.database().ref('/').child("/rank");
+    var database = undefined;
+  usersRef.push({
+  	user : user,
+    score : score,
+    combo : combo
+  })
+}
+var numArray = [];
+var test = [];
+var combo = [];
+var score = [];
+var index = 1;
+function rank_show(data_length, data, pre_score){
+	
+	//랭킹 순으로 나열
+	test.push(data.user+' '+data.combo+' '+data.score);
+	numArray.push(pre_score);
+	var temp;
+	var j=1
+	for(var i=0;i<numArray.length-1;i++){
+		for(j;j<numArray.length;j++){
+			if(numArray[i]<numArray[j]){
+				temp = numArray[i];
+				numArray[i]=numArray[j];
+				numArray[j]=temp;
+	        }
+	    }
+		j=i+1;
+		j++;
+	}
+	if(numArray.length == data_length){
+		for(var i=0;i<numArray.length;i++){
+			for(var j=0;j<test.length;j++){
+				if(numArray[i]==test[j].split(' ')[2]){
+					console.log("비교 완료");
+				$("#rank_table").append("<tr class='trname'><td>"+index+"</td><td>"+test[j].split(' ')[0]+"</td><td>"+test[j].split(' ')[1]+"</td><td>"+test[j].split(' ')[2]+"</td></tr>");
+				index++;
+				}
+			}
+		}
+	}
+}
+$("#ranking").click(function(){
+	console.log("ranking in");
+	$("#score").css("display","none");
+	$("#test1").css("display","block");
+
+	getDatabase(function(data){
+      console.log("@@",data.length);
+      for(var i=0;i<data.length;i++){
+        var pre_score = data[i].score;
+        rank_show(data.length,data[i],pre_score);
+        
+      }
+    });
+});
+
+// var numArray2 = [];
+// numArray2.sort(sortNumber);
+// alert(numArray2.join(","));
+// function sortNumber(a,b) {
+//     return a - b;
+// }
+
+// var numArray2 = [];
+// for(var i=0;i<numArray[0].length;i++){
+//  numArray2[i] = numArray[0][i].score;
+// console.log(numArray2[i]);
+// }
+// numArray2.sort(sortNumber);
+// function sortNumber(a,b) {
+//     return b-a;
+// }
+// alert(numArray2.join(","));
+</script>
+</body>
+</html>
