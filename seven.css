@@ -1,0 +1,161 @@
+	body{
+		width: 100%;
+		width: 100%;
+	}
+	table, th, td { border: 1px solid black; } th { cursor: pointer; } 
+	.timeView .time{
+		font-size: 25px;
+		font-weight: bold;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.timeView .combo{
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		margin: 5px auto;
+	}
+	.contentView .gamebutton{
+		border: 1px solid #ffffff;
+		padding: 30px;
+		font-size: 60px;
+		color: #ffffff;
+		text-align: center;
+		font-weight: bold;
+		transition: all 0.5s;
+	}
+	.contentView .gamebutton .inner-text{
+		transition: all 0.2s;
+	}
+	.scoreView .score{
+		font-size: 25px;
+		font-weight: bold;
+		text-align: center;
+		margin: 30px auto;
+	}
+	#score{
+		font-size: 25px;
+		font-weight: bold;
+		line-height: 100px;
+		margin-top: 100px;
+	}
+	#score #com-score{
+		margin: 0 auto;
+		text-align: center;
+	}
+	#score .rank_restart{
+		width: 100%;
+		float: left;
+		text-align: center;
+		margin: 0 auto;
+	}
+	#score .rank_restart a{
+		font-size: 25px;
+	}
+	#score #userShow{
+		width: 150px;
+		height: 30px;
+	}
+	#st-game{
+		display : inline-block;
+		width: 100%;
+		font-size: 30px;
+		font-weight: bold;
+		line-height: 100px;
+		margin-top: 100px;
+		text-align: center;
+	}
+	#st-game #st-view{
+		margin: 0 auto;
+		text-align: center;
+	}
+	#st-game #st-view .sp1{
+		color: #000;
+		text-shadow: 0px 1px 8px #fff;
+	}
+	#st-game .st-game-go{
+		display : inline-block;
+		text-align: right;
+		width: 48%; 
+	}
+	#st-game .st-game-register{
+		display : inline-block;
+		width: 48%;
+		margin-left: 10px;
+		text-align: left;
+	}
+	#st-game .st-game-go a{
+		font-size: 20px;
+	}
+	#st-game .st-game-register a{
+		font-size: 21px;
+	}
+	#game-register{
+		display : inline-block;
+		width: 100%;
+		height: 300px;
+		font-size: 15px;
+		font-weight: bold;
+		line-height: 15px;
+		margin:100px auto;
+	}
+	#game-register #register-form{
+		display : inline-block;
+		position: relative;
+		width: 50%;
+		margin-top: 30px;
+	}
+	#game-register #register-form #id{
+		width: 100%;
+		position: absolute;
+		left: 50%;
+	}
+	#game-register #register-form #id div{
+		width: 100%;
+		margin: 10px;
+	}
+	#game-register #register-form #pass{
+		position: absolute;
+		width: 100%;
+		left: 50%;
+		top: 90px;
+	}
+	#game-register #register-form #pass div{
+		width: 100%;
+		margin: 10px;
+	}
+	#game-register #register-form #submit{
+		position: absolute;
+		width: 100%;
+		left: 50%;
+		top: 175px;
+		text-align: right;
+	}
+	.rank_list{
+		margin-top: 100px;
+		text-align: center;
+	}
+	.rank_list div caption{
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	.rank_list div thead{
+		font-size: 15px;
+		font-weight: bold;
+	}
+	@media screen and (max-width:767px){
+		.contentView .gamebutton{
+			width: 25%;
+			float: left;
+		}
+	}
+	@media screen and (min-width: 768px){
+		.contentView .gamebutton{
+			width: 25%;
+			float: left;
+		}
+	}
+	@media screen and (min-width:1200px){
+	}
