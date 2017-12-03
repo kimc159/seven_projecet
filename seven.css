@@ -75,14 +75,8 @@
 	}
 	#st-game .st-game-go{
 		display : inline-block;
-		text-align: right;
-		width: 48%; 
-	}
-	#st-game .st-game-register{
-		display : inline-block;
-		width: 48%;
-		margin-left: 10px;
-		text-align: left;
+		text-align: center;
+		width: 100%; 
 	}
 	#st-game .st-game-go a{
 		font-size: 20px;

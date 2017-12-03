@@ -95,7 +95,7 @@
 <div id="score" style="display: none;">
 	<div class="row" id="com-score">
 		<div class="col-lg-12">
-			<span id="user_name">user :</span></span><input type="text" id="userShow">
+			<span id="user_name">user :</span><input type="text" id="userShow">
 			<a class="btn btn-primary" href="#" role="button" id="rank_btn">확인</a>
 		</div>
 		<div class="col-lg-12">
@@ -118,30 +118,8 @@
 		<div class="col-lg-12">
 			<span class="sp2"> good luck !</span>
 		</div>
-	</div>
-	<div class="st-game-go">
-		<a class="btn btn-primary btn-lg" role="button" onclick="st_game()">start</a>
-	</div>
-	<div class="st-game-register" style="display: inline-block;">
-		<a class="btn btn-primary btn-lg" role="button" onclick="game_register()">register</a>
-	</div>
-</div>
-<div id='game-register' style="display: none;">
-	<div class="row" id="register-form">
-		<div class="col-lg-12" id="id">
-			<div>
-				<span>이름 : </span>
-			</div>
-			<input type="text" class="form-control" placeholder="이름 입력하세요" id="user_name">
-		</div>
-		<div class="col-lg-12" id="pass">
-			<div>
-				<span>비밀번호 : </span>
-			</div>
-			<input type="text" class="form-control" placeholder="비밀번호를 입력하세요" id="user_pw">
-		</div>
-		<div class="col-lg-12" id="submit">
-			<button type="button" class="btn btn-default">가입</button>
+		<div class="col-lg-12 st-game-go">
+			<a class="btn btn-primary btn-lg" role="button" onclick="st_game()">start</a>
 		</div>
 	</div>
 </div>
@@ -260,6 +238,7 @@ function msg_time() {	// 1초씩 카운트
 		$("#comboShow").text(combo_show);
 	}
 }
+// 게임이 끝나고 사용자 이름을 입력하고 확인 버튼을 누르면 user 저장
 $("#rank_btn").click(function(){
 	var user = $("#userShow").val();
 	console.log(user);
@@ -277,18 +256,15 @@ function st_game(){
 	$("#seven").css("display","block");
 	TimerStart();
 }
-function game_register(){
-	$("#st-game").css("display","none");
-	$("#game-register").css("display","inline-block");
 
-}
 function TimerStart(){ tid=setInterval('msg_time()', 1000) };
 
-function getDatabase(cb){
-      firebase.database().ref('/rank').orderByChild('uid').once('value').then(function(data) {
+function getDatabase(cb){// 데이터베이스에서 데이터를 읽거나 쓰려면 firebase.database().ref() 의 인스턴스가 필요하다. 특정 경로의 데이터를 읽고 변경을 수신대기 하려면 on() 또는 once를 사용하고 value 이벤트를 이용하여 이벤트 발생 시점에서 전체 내용을 읽을 수 있다.
+    firebase.database().ref('/rank').orderByChild('uid').once('value').then(function(data) {
     var database = data.val();
-    //console.log(database);
+    //console.log(database);// rank 안에 있는 전체 내용
         DB_WORDS_DATA = Object.keys(database).map(function(data) {
+        	//console.log(database[data]);// data 는 각각의 uid 값
             return {
                 id : data,
                 user : database[data].user,
@@ -328,13 +304,15 @@ var test = [];
 var combo = [];
 var score = [];
 var index = 1;
+// data 길이랑
 function rank_show(data_length, data, pre_score){
 	
-	//랭킹 순으로 나열
+	//랭킹 순으로 나열 (각각의 유저 및 콤보 점수를 공백으로 나눠서 test에 푸쉬)
 	test.push(data.user+' '+data.combo+' '+data.score);
-	numArray.push(pre_score);
+	numArray.push(pre_score);// 점수만 받아와서 푸쉬
 	var temp;
 	var j=1
+	// numArray에 점수를 내림차순으로 정렬
 	for(var i=0;i<numArray.length-1;i++){
 		for(j;j<numArray.length;j++){
 			if(numArray[i]<numArray[j]){
@@ -346,6 +324,7 @@ function rank_show(data_length, data, pre_score){
 		j=i+1;
 		j++;
 	}
+	// 내림차순 정렬한 numArray와 test에 있는 데이터 score 값이 같으면 화면에 첫번째 순서로 출력 
 	if(numArray.length == data_length){
 		for(var i=0;i<numArray.length;i++){
 			for(var j=0;j<test.length;j++){
@@ -365,6 +344,7 @@ $("#ranking").click(function(){
 
 	getDatabase(function(data){
       console.log("@@",data.length);
+      console.log(data);
       for(var i=0;i<data.length;i++){
         var pre_score = data[i].score;
         rank_show(data.length,data[i],pre_score);
